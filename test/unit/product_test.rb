@@ -16,16 +16,16 @@ class ProductTest < ActiveSupport::TestCase
 	 product = Product.new(title: "My Book Title",
 	                       description: "yyy",
 						   image_url: "zzz.jpg")
-	 product.price= -1
-	 assert product.invalid?
-	 assert_equal "must be greater than or equal to 0.01", product.errors[:price].join('; ')
+	 product.price = -1
+	 assert product.invalid?, product.errors[:price].join('; ')
+	 
 	 
 	 product.price = 0
-	 essert product.invalid?
-	 assert_equal "must be greater than or equal to 0.01", product.errors[:price].join('; ')
+	 assert product.invalid?, product.errors[:price].join('; ')
+	 
 	 
 	 product.price = 1
-	 assert product.valid?
+	 assert product.valid?, product.errors[:price].join('; ')
    
    end
    
@@ -51,13 +51,25 @@ class ProductTest < ActiveSupport::TestCase
    end
    
    test "product is not valid without a unique title" do
-     product = Product.new(title: products(:ruby).title
+     product = Product.new(title: products(:ruby).title,
 	                 description: "yyy",
 					 price: 1,
 					 image_url: "fred.gif")
 	
 	 assert !product.save
 	 assert_equal "has already been taken", product.errors[:title].join('; ')
+   
+   
+   end
+   
+   test "length must be greater than 10 liters" do
+     product = Product.new(description: "yyy",
+						   image_url: "zzz.jpg",
+						   price: 9.99)
+						   
+	 product.title = "Book"
+     
+	 assert product.invalid?, product.errors[:title].join('; ')   
    
    
    end
