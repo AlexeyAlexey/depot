@@ -1,4 +1,4 @@
-require 'test_helper'
+﻿require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
   setup do
@@ -15,6 +15,8 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:products)
+	assert_select 'h1', 'Listing products'
+	assert_select '.list_action a', minimum: 3
   end
 
   test "should get new" do
@@ -49,6 +51,8 @@ class ProductsControllerTest < ActionController::TestCase
     assert_difference('Product.count', -1) do
       delete :destroy, id: @product
     end
+	
+  
 
     assert_redirected_to products_path
   end
