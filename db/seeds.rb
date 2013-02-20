@@ -8,7 +8,7 @@
 Product.delete_all
 
 
-Product.create(title: 'Programming Ruby 1.9',
+Product.create(title: 'CoffeeScript',
     description:
 	       %{<p>
 		     CoffeeScript is JavaScript done right. It provides all of JavaScript's

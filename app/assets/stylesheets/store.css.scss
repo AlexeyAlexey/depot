@@ -12,6 +12,7 @@
 	 border-bottom: 3px dotted #77d;   
      }
 	 
+   	 
 	 /*Запись в каталоге Store*/
 	 
 	 .entry {
@@ -49,7 +50,21 @@
 		 }
 		 
 	 }
-
+    
+	 p, div.price_line {
+	 
+	     margin-left: 100px;
+		 margin-top: 0.5em;
+		 margin-bottom: 0.8em;
+		 
+		 form, div {
+		     display: inline;		 
+		 
+		 }
+	 
+	 
+	 
+	 }
 
 
 }

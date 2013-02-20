@@ -9,7 +9,8 @@
 <body class='<%= controller.controller_name %>'>
   <div id="banner">
      <%= image_tag("logo.png") %>
-     <%= @page_title || "Pragmatic Bookshelf" %>     
+     <%= @page_title || "Pragmatic Bookshelf" %> 
+     <h2> <%= session[:counter] %> <h2>	 
   </div>
   <div id="columns">
     <div id="side">
