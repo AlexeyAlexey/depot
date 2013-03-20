@@ -4,16 +4,23 @@
   <title>Pragprog Books Online Store</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
   <div id="banner">
      <%= image_tag("logo.png") %>
      <%= @page_title || "Pragmatic Bookshelf" %> 
-     <h2> <%= session[:counter] %> <h2>	 
+      
   </div>
   <div id="columns">
     <div id="side">
+     <% if @cart %>
+         <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+               <% render @cart %>
+         <% end %>
+     <% end %>
+         
 	   <ul>
 	       <li> Time and date are </li>
 		   <li> <%= Time.current %> </li>
@@ -25,7 +32,7 @@
 	   
 	   </ul>
 	   
-	</div>
+    </div>
 	
 	<div id="main">
 	      <%= yield %>
