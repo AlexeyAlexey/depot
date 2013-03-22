@@ -81,10 +81,11 @@
 	
     @cart = current_cart
     @cart.destroy
-	session[:cart_id] = nil
+    session[:cart_id] = nil
 
     respond_to do |format|
       format.html { redirect_to store_url }
+      format.js
       format.json { head :no_content }
     end
   end
