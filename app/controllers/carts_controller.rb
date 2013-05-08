@@ -17,6 +17,7 @@
     @cart = Cart.find(params[:id])
    rescue ActiveRecord::RecordNotFound
     logger.error "Попытка доступа к несуществующей корзине #{params[:id]}"
+    MessageForAdmin.m_errors("Попытка доступа к несуществующей корзине #{params[:id]}").deliver
 	redirect_to store_url, notice: 'Несуществующая корзина'
    else
     respond_to do |format|
