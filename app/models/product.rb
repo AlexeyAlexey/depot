@@ -1,7 +1,8 @@
 ﻿class Product < ActiveRecord::Base
   has_many :line_items
   has_many :carts #
-  
+  has_many :orders, through: :line_items
+
   attr_accessible :description, :image_url, :price, :title
   
     

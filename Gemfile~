@@ -21,8 +21,13 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 gem 'therubyracer'
+
+<<<<<<< HEAD
+gem 'therubyracer'
+=======
+gem 'will_paginate', '~> 3.0'
+>>>>>>> 2ac7480683314a6fa6bf9a3e2c2734b5309bf903
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

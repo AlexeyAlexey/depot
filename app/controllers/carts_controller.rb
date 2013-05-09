@@ -17,6 +17,7 @@
     @cart = Cart.find(params[:id])
    rescue ActiveRecord::RecordNotFound
     logger.error "Попытка доступа к несуществующей корзине #{params[:id]}"
+    MessageForAdmin.m_errors("Попытка доступа к несуществующей корзине #{params[:id]}").deliver
 	redirect_to store_url, notice: 'Несуществующая корзина'
    else
     respond_to do |format|
@@ -79,12 +80,13 @@
   def destroy
     
 	
-	@cart = current_cart
+    @cart = current_cart
     @cart.destroy
-	session[:cart_id] = nil
+    session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to store_url, notice: 'Теперь ваша корзина пуста!' }
+      format.html { redirect_to store_url }
+      format.js
       format.json { head :no_content }
     end
   end
