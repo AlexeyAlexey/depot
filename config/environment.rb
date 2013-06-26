@@ -13,7 +13,7 @@ Depot::Application.configure do
       :authentication  =>    "plain",
       :domain          =>    "gmail.com",
       :user_name       =>    "ialexey.kondratenko", 
-      :password        =>    "1828alexey",
+      :password        =>    "",
       :enable_starttls_auto=> true
    }
 
